@@ -19,7 +19,6 @@ A Streamlit-based movie recommendation app that suggests 10 similar movies based
 
 - `app.py` - Streamlit application
 - `requirements.txt` - Python dependencies for local setup and deployment
-- `.streamlit/secrets.toml.example` - example secrets file for local development
 - `Untitled6.ipynb` - notebook used during development
 
 ## Requirements
@@ -36,8 +35,8 @@ A Streamlit-based movie recommendation app that suggests 10 similar movies based
 pip install -r requirements.txt
 ```
 
-3. Create `.streamlit/secrets.toml` from `.streamlit/secrets.toml.example`.
-4. Fill in your Hugging Face repo details and TMDB API key.
+3. Create `.streamlit/secrets.toml` if you want to use local Streamlit secrets.
+4. Add your Hugging Face repo details and TMDB API key through Streamlit secrets or environment variables.
 5. Start the app:
 
 ```bash
