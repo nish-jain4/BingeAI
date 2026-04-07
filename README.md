@@ -7,58 +7,64 @@ A Streamlit-based movie recommendation app that suggests 10 similar movies based
 - Pick a movie from the dropdown
 - Get 10 recommended movies
 - Show posters for recommended titles
+- Download the recommendation dataset from Hugging Face
 - Handle poster API failures gracefully
 
 ## Project Files
 
 - `app.py` - Streamlit application
-- `movie_recommender.pkl` - processed movie data and similarity matrix
+- `requirements.txt` - Python dependencies for local setup and deployment
+- `.streamlit/secrets.toml.example` - example secrets file for local development
 - `Untitled6.ipynb` - notebook used during development
 
 ## Requirements
 
 - Python 3.10+
-- Streamlit
-- pandas
-- requests
-- scikit-learn
-- numpy
-
-Install dependencies with:
-
-```bash
-pip install streamlit pandas requests scikit-learn numpy
-```
+- The packages listed in `requirements.txt`
 
 ## Run Locally
 
 1. Clone the repository.
-2. Make sure `movie_recommender.pkl` is present in the project folder.
-3. Install the required packages.
-4. Start the app:
+2. Install the required packages:
+
+```bash
+pip install -r requirements.txt
+```
+
+3. Create `.streamlit/secrets.toml` from `.streamlit/secrets.toml.example`.
+4. Fill in your Hugging Face repo details and TMDB API key.
+5. Start the app:
 
 ```bash
 streamlit run app.py
 ```
 
-## Important Note About `movie_recommender.pkl`
+## Hugging Face Dataset
 
-The app depends on `movie_recommender.pkl` to load the movie dataset and similarity matrix. This file is not included in the GitHub repository, so you must place it manually in the project root before running or deploying the app.
+The app downloads `movie_recommender.pkl` from a Hugging Face dataset repository at startup. The file is not stored in this GitHub repository.
 
-## TMDB API
+If your dataset is private, provide an `HF_TOKEN` in Streamlit secrets. If it is public, the token is optional.
 
-Movie posters are fetched from TMDB. The app currently expects a TMDB API key in the code. For production deployment, it is better to move the API key into environment variables or Streamlit secrets instead of hardcoding it.
+## Secrets
+
+Store deployment values in Streamlit secrets or environment variables:
+
+- `HF_REPO_ID`
+- `HF_REPO_TYPE`
+- `HF_FILENAME`
+- `HF_TOKEN` (optional for public datasets)
+- `TMDB_API_KEY`
 
 ## Deployment
 
 To deploy on Streamlit Community Cloud:
 
 1. Push the repository to GitHub.
-2. Make sure the deployment environment can access `movie_recommender.pkl`.
-3. Add your TMDB API key securely using Streamlit secrets.
+2. Make sure your Hugging Face dataset repo contains `movie_recommender.pkl`.
+3. Add the required secrets in Streamlit Community Cloud.
 4. Deploy `app.py` as the main file.
 
 ## Notes
 
 - If a poster cannot be fetched, the app shows `Poster unavailable`.
-- If `movie_recommender.pkl` is missing, the app will not start.
+- If the Hugging Face dataset cannot be reached, the app will stop with a setup error message.

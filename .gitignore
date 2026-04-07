@@ -2,3 +2,4 @@
 __pycache__/
 *.pyc
 movie_recommender.pkl
+.streamlit/secrets.toml
