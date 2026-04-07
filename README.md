@@ -2,6 +2,11 @@
 
 A Streamlit-based movie recommendation app that suggests 10 similar movies based on a selected title and displays posters from TMDB when available.
 
+## Live App
+
+- Streamlit app: https://bingeai.streamlit.app/
+- Hugging Face dataset: https://huggingface.co/datasets/nish-jain/BingeAI
+
 ## Features
 
 - Pick a movie from the dropdown
@@ -63,6 +68,8 @@ To deploy on Streamlit Community Cloud:
 2. Make sure your Hugging Face dataset repo contains `movie_recommender.pkl`.
 3. Add the required secrets in Streamlit Community Cloud.
 4. Deploy `app.py` as the main file.
+
+The current live deployment is available at https://bingeai.streamlit.app/.
 
 ## Notes
 
