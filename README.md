@@ -13,6 +13,7 @@ A Streamlit-based movie recommendation app that suggests 10 similar movies based
 - Get 10 recommended movies
 - Show posters for recommended titles
 - Download the recommendation dataset from Hugging Face
+- Use a cleaned and serialized recommendation artifact built from the original Kaggle source data
 - Handle poster API failures gracefully
 
 ## Project Files
@@ -47,7 +48,17 @@ streamlit run app.py
 
 The app downloads `movie_recommender.pkl` from a Hugging Face dataset repository at startup. The file is not stored in this GitHub repository.
 
+`movie_recommender.pkl` is a cleaned and serialized artifact created after preprocessing the original Kaggle dataset in the development notebook.
+
 If your dataset is private, provide an `HF_TOKEN` in Streamlit secrets. If it is public, the token is optional.
+
+## Source Data
+
+The recommendation data was built from Kaggle's TMDB 5000 Movie Dataset:
+
+- Kaggle dataset: https://www.kaggle.com/datasets/tmdb/tmdb-movie-metadata
+
+The notebook [Untitled6.ipynb](Untitled6.ipynb) downloads that dataset, cleans and processes the movie metadata, and then saves the final `movie_recommender.pkl` file used by the app.
 
 ## Secrets
 
